@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Feedback Form</title>
+    <link rel="stylesheet" href="/CSS/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #013767;
+            color: #FFFFFF;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 2%;
+        }
+
+        h1 {
+
+            text-align: center;
+            color: #ffffff;
+
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #013767;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #013767;
+            border-radius: 4px;
+        }
+
+        input[type="number"] {
+            width: 30%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #013767;
+            border-radius: 4px;
+        }
+
+        .rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+        }
+
+        .rating input {
+            display: none;
+        }
+
+        .rating label {
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            background-color: #013767;
+            margin: 0 4px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .rating label:hover,
+        .rating label:hover~label {
+            background-color: #4BBFD3;
+        }
+
+        .rating input:checked~label,
+        .rating input:checked~label:hover~label {
+            background-color: #DF3159;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #DF3159;
+            color: #FFFFFF;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #4BBFD3;
+        }
+
+        .btn-success {
+            color: #DF3159;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="logo">
+            <a href="/"><img src="/images/home-logo.jpeg" alt=""></a>
+        </div>
+        <div class="nav-center">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#art">Gallery</a></li>
+                <li><a href="/about">About us</a></li>
+                <li><a href="/feedback">Contact us</a></li>
+            </ul>
+        </div>
+        <div class="side-nav">
+            <ul>
+                <li><a href="/register">Register</a></li>
+                <li> <a href="/feedback">Feedback</a></li>
+            </ul>
+        </div>
+
+    </nav>
+
+    <h1>Event Feedback Form</h1>
+
+    <form id="feedbackForm" method="post" action="/feedbackform/submitted">
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName" name="studentName" required placeholder="Enter Student name">
+
+        <label for="eventRating">Overall Event Rating:</label>
+        <div class="rating">
+            <input type="radio" id="star5" name="eventRating" value="5" required>
+            <label for="star5">5</label>
+            <input type="radio" id="star4" name="eventRating" value="4" required>
+            <label for="star4">4</label>
+            <input type="radio" id="star3" name="eventRating" value="3" required>
+            <label for="star3">3</label>
+            <input type="radio" id="star2" name="eventRating" value="2" required>
+            <label for="star2">2</label>
+            <input type="radio" id="star1" name="eventRating" value="1" required>
+            <label for="star1">1</label>
+        </div>
+
+        <label for="feedbackComments">Comments:</label>
+        <textarea id="feedbackComments" name="feedbackComments" rows="4" required
+            placeholder="Enter Valuable Comments"></textarea>
+
+        <label for="suggestions">Any Suggestions for Improvement:</label>
+        <textarea id="suggestions" name="suggestions" rows="4"
+            placeholder="Please provide suggestions your response matters"></textarea>
+
+        <label for="favoritePart">Favorite Part of the Event:</label>
+        <input type="text" id="favoritePart" name="favoritePart" placeholder="Enter your favorite part">
+
+        <button type="Submit">Submit Feedback</button>
+    </form>
+
+    <button class="btn btn-success" style="width: 200px; margin: auto; color: #DF3159;"> <a href="/feedback/show">Show
+            feedback</a></button>
+
+    <script>
+        function submitFeedback() {
+            // Client-side validation
+            var studentName = document.getElementById('studentName').value;
+            var eventRating = document.querySelector('input[name="eventRating"]:checked');
+            var feedbackComments = document.getElementById('feedbackComments').value;
+
+            // Check if fields are not empty
+            if (!studentName || !eventRating || !feedbackComments) {
+                alert('All fields are required!');
+                return;
+            }
+
+            // If all validations pass, you can submit the feedback
+            alert('Feedback submitted successfully!');
+        }
+    </script>
+
+</body>
+
+</html>
