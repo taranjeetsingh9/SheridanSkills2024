@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration</title>
+    <link rel="icon" type="image/png" href="/Images/favicon.png">
+    <link rel="stylesheet" href="/CSS/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #013767;
+            color: #FFFFFF;
+
+
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 30px 36px;
+            border-radius: 25px;
+            margin-top: 25px;
+
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #013767;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            color: #013767;
+            border: 1px solid #013767;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #DF3159;
+            color: #FFFFFF;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="logo">
+            <a href="/"><img src="/Images/home-logo.jpeg" alt="Logo Image"></a>
+        </div>
+        <div class="nav-center">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#art">Gallery</a></li>
+                <li><a href="/about">About us</a></li>
+                <li><a href="/feedback">Contact us</a></li>
+            </ul>
+        </div>
+        <div class="side-nav">
+            <ul>
+                <li><a href="/register">Register</a></li>
+                <li> <a href="/feedback">Feedback</a></li>
+            </ul>
+        </div>
+
+    </nav>
+
+    <h1>Event Registration Form</h1>
+
+    <form id="registrationForm" action="/registrationform/submitted" method="POST">
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName" name="studentName" required placeholder="Enter name:">
+
+        <label for="studentEmail">Student Email:</label>
+        <input type="email" id="studentEmail" name="studentEmail" required placeholder="Enter Student Email:">
+
+        <label for="studentNumber">Student Number:</label>
+        <input type="text" id="studentNumber" name="studentNumber" pattern="[0-9]+" required
+            placeholder="Enter Student number">
+
+        <label for="eventSelection">Select Event:</label>
+        <select id="eventSelection" name="eventSelection" required>
+            <option value="">Select an event</option>
+            <option value="event1">Event 1</option>
+            <option value="event2">Event 2</option>
+            <!-- Add more event options as needed -->
+        </select>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <!---view registrations -->
+    <button class="btn btn-info" style="margin-top: 5%;"><a href="/showRegistrations">Show
+            Registrations</a></button>
+    <br> <br>
+
+    <button class="btn btn-info"><a href="/showParticipants" style="color: white;">Show participants</a></button>
+    <script>
+        function submitForm() {
+            // Client-side validation
+            var studentName = document.getElementById('studentName').value;
+            var studentEmail = document.getElementById('studentEmail').value;
+            var studentNumber = document.getElementById('studentNumber').value;
+            var eventSelection = document.getElementById('eventSelection').value;
+
+            // Check if fields are not empty
+            if (!studentName || !studentEmail || !studentNumber || !eventSelection) {
+                alert('All fields are required!');
+                return;
+            }
+
+            // Validate student number
+            if (!/^[0-9]+$/.test(studentNumber)) {
+                alert('Student number should be a number!');
+                return;
+            }
+
+            // Perform additional email validation if needed
+
+            // Perform any other custom validations as needed
+
+            // If all validations pass, you can submit the form
+            alert('Form submitted successfully!');
+        }
+    </script>
+
+</body>
+
+</html>
