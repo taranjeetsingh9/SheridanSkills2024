@@ -6,7 +6,6 @@ const methodoverride = require("method-override");
 const Feedback = require("./models/feedback.js");
 const RegistrationS = require("./models/registrationS.js");
 
-
 app.use(methodoverride("_method"));
 
 // mongo db connect
