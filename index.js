@@ -49,6 +49,7 @@ app.post("/registrationform/submitted", async (req, res) => {
       eventSelection,
     });
 
+    
     await newRegistration.save();
 
     console.log(newRegistration);
